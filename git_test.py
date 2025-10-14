@@ -1,7 +1,8 @@
 print("hello user!")
 
-print("this is sound absorption coefiicient calculator")
+print("Please type in your parameters. This will let us complete your calculations:)")
 
-print("type in your parameters. This will let us complete your calculations")
+length, width, height = int(input("Length of room (m) : ")), int(input("Width of room (m) : ")), int(input("Height of room (m) : "))
 
+print(f"These are dimmensions of your room: {length}x{width}x{height}m")
 
