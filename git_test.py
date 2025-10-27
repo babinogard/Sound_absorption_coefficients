@@ -59,9 +59,22 @@ if __name__ == "__main__":
 
         floorCarpetSAC = 0.15
 
-        #YOU NEED DIMENSIONS OF SURFACES HERE!!!!!!!
+        # RECALLING DIMMENSIONS OF SURFACES HERE
         
+        walls, ceilling, floor, v = calc_surface()
         
+        numberWallPanels = walls//megaWallm2
+        numberCeillingPanels = ceilling//ceillingPanelm2
+
+        # RECALCULATION OF SOUND ABSORPTION COEFFICIENTS
+        a = walls - numberWallPanels * megaWallm2
+        b = ceilling - numberCeillingPanels * ceillingPanelm2
+
+        #fullWallABS = numberWallPanels * megaWallm2 * megaWallpanelSAC + a * # YOU HAVE TO CALL wallsSAC from calc_absorption()
+        #fullCeillingABS = numberCeillingPanels * ceillingPanelm2 * ceillingPanelSAC + b * # YOU HAVE TO CALL ceillingSAC from calc_absorption()
+        #fullFloorABS = floor * floorCarpetSAC
+
+
 
         return 0
 
@@ -71,6 +84,8 @@ if __name__ == "__main__":
     def ISO_standard_comparator():
 
         roomAA = calc_absorption()
+
+        # You should create base of various rooms
 
         roomMinSAC = float(input("Type in the standardized sound absorption coefficient for your room: "))
 
