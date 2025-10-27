@@ -45,11 +45,13 @@ rich==13.7.0
 rich-click==1.7.1
 scipy==1.13.0
 setuptools==69.0.2
+shellingham==1.5.4
 shutilwhich==1.1.0
 six==1.16.0
 sqlparse==0.5.3
 sympy==1.12
 tempdir==0.7.1
+typer==0.20.0
 typing_extensions==4.8.0
 tzdata==2023.3
 urllib3==2.0.7
