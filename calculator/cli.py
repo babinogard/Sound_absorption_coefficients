@@ -1,6 +1,7 @@
 import typer
-from calculator/core.py import ISO_standard_comparator, adaptation_designer
-from calculator/materials_rooms.py import Panel, Covering
+from core import ISO_standard_comparator, adaptation_designer
+from materials_rooms import Panel
+from materials_rooms import Covering
 
 app = typer.Typer()
 
