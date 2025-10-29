@@ -1,4 +1,4 @@
-from .materialsrooms import Panel, Covering,
+#from materials_rooms import Panel, Covering, Room
 
 
 def calc_surface(length, width, height): 
@@ -31,7 +31,7 @@ def calc_absorption(length, width, height, wallsSAC, ceillingSAC, floorSAC):
 
 # Calculates demand for acoustic materials, and gives various options for the same room.
 
-def adaptation_designer(difference, wallsSAC, ceillingSAC):
+def adaptation_designer(wallsSAC, ceillingSAC, ldim, wdim, hdim):
 
     ecophonWallpanelSAC = 1.0
     ecophonWallm2 = 1.62
@@ -49,7 +49,7 @@ def adaptation_designer(difference, wallsSAC, ceillingSAC):
 
     # RECALLING DIMMENSIONS OF SURFACES HERE
     
-    walls, ceilling, floor, v = calc_surface()
+    walls, ceilling, floor, v = calc_surface(ldim, wdim, hdim)
     
     numberWallPanels = walls//megaWallm2
     numberCeillingPanels = ceilling//ceillingPanelm2
@@ -73,16 +73,19 @@ def ISO_standard_comparator(length, width, height, wallsSAC, ceillingSAC, floorS
     roomAA = calc_absorption(length, width, height, wallsSAC, ceillingSAC, floorSAC)
 
     # You should create base of various rooms
+    difference = roomMinSAC - roomAA
 
     if roomAA < roomMinSAC:
-            
-            difference = roomMinSAC - roomAA
+
             #HERE SHOULD BE SOME BOOLEAN STATEMENT THAT RETURN VALUE TO CLI
+            result = False
             #print(f"Your room has to low sound absorption coefficient! {difference} more Sabins are needed. Choose which acoustic adaptation system is suitable for you")
             
-            adaptation_designer(difference, wallsSAC, ceillingSAC)
+            #adaptation_designer(difference, wallsSAC, ceillingSAC)
     else:
             #HERE SHOULD BE ANOTHER BOOLEAN STATEMENT THAT RETURN VALUE TO CLI
-            print(f"Well done! You are master in acoustics:)")
+            result = True
+            #print(f"Well done! You are master in acoustics:)")
 
     #print(f"Whole room acoustic absorption equals to {calc_absorption(0.001, 0.04, 0.03, 0.02)}")
+    return result, difference
