@@ -1,3 +1,7 @@
+from materials_rooms import Panel
+
+from dataclasses import fields
+'''
 import typer
 
 print(typer.__file__)
@@ -21,3 +25,10 @@ def func(value: int, number: int):
 
 if __name__=="__main__":
     app()
+'''
+def numerate():
+
+    for x in fields(Panel):
+        print(x.name, )
+
+numerate()
