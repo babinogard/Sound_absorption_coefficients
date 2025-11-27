@@ -19,11 +19,11 @@ def calculate(length: float, width: float, height: float, wallssac: float, ceill
         #enumerate(Covering)
         
         
-        a = typer.prompt("Input the coefficients of wall materials", type = float)
-        b = typer.prompt("Input the coefficients of ceilling materials", type = float)
+        a = typer.prompt("Input the coefficients of wall materials: ", type = float)
+        b = typer.prompt("Input the coefficients of ceilling materials: ", type = float)
         designed_roomAA = adaptation_designer(a, b, length, width, height)
 
-        typer.echo(f"✨ Well done, the room has {designed_roomAA} Sabins now, and it meets ISO standards ✨")
+        typer.echo(f" Well done, the room has {designed_roomAA} Sabins now, and it meets ISO standards.")
 
     else:
         typer.echo("Error. Wrong returned value")
