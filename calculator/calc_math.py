@@ -36,7 +36,7 @@ def numerate():
 #        print(tabulate(f"{x}.{p.name},  {p.function},  {p.absorption}"))
     
 
-    headers = ["name", "function", "absorption", "surface", "length", "width"]
+    headers = ["number", "name", "function", "absorption", "surface", "length", "width"]
     print("\n" + tabulate(PANELS, headers=headers)+ "\n")
 
 numerate()

@@ -1,14 +1,20 @@
 import typer
 from tabulate import tabulate
 from core import ISO_standard_comparator, adaptation_designer
-from materials_rooms import PANELS, COVERINGS
+from materials_rooms import PANELS, COVERINGS, ROOMS
 
 app = typer.Typer()
 
 @app.command()
-def calculate(length: float, width: float, height: float, wallssac: float, ceillingsac: float, floorsac: float, roomminsac: float):
+def calculate(length: float, width: float, height: float, wallssac: float, ceillingsac: float, floorsac: float):
 
-    result, difference = ISO_standard_comparator(length, width, height, wallssac, ceillingsac, floorsac, roomminsac)
+    room_headers = ["Id", "name", "multiplier"]
+    typer.echo("\n" + tabulate(ROOMS, headers=room_headers)+ "\n")
+    multiplix = typer.prompt("Input the wall material mulitplier: ", type = float)
+    roominsac = length * width * multiplix
+    typer.echo(f"Minimal Sound absorption requirement is {roominsac} for this room.")
+
+    result, difference = ISO_standard_comparator(length, width, height, wallssac, ceillingsac, floorsac, roominsac)
 
     if result == True:
         typer.echo(f"✨ Well done, the room is {difference} above minimal Sabin value ✨")
@@ -16,8 +22,8 @@ def calculate(length: float, width: float, height: float, wallssac: float, ceill
         typer.echo("You need acoustic adaptation. Choose the material for each surface")
 
         # HERE YOU HAVE TO PRINT OUT LIST OF MATERIALS AND HOW TO CONSTRUCT COMMENT THAT YOU HAVE TO USE
-        headers = ["name", "function", "absorption", "surface", "length", "width"]
-        typer.echo("\n" + tabulate(PANELS, headers=headers)+ "\n")
+        pan_headers = ["Id", "name", "function", "absorption", "surface", "length", "width"]
+        typer.echo("\n" + tabulate(PANELS, headers=pan_headers)+ "\n")
         
         
         a = typer.prompt("Input the coefficients of wall materials: ", type = float)
