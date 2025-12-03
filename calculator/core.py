@@ -73,7 +73,7 @@ def ISO_standard_comparator(length, width, height, wallsSAC, ceillingSAC, floorS
     roomAA = calc_absorption(length, width, height, wallsSAC, ceillingSAC, floorSAC)
 
     # You should create base of various rooms
-    difference = roomMinSAC - roomAA
+    difference = roomAA - roomMinSAC
 
     if roomAA < roomMinSAC:
 

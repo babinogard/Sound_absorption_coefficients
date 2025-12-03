@@ -1,6 +1,7 @@
 import typer
+from tabulate import tabulate
 from core import ISO_standard_comparator, adaptation_designer
-from materials_rooms import Panel, Covering
+from materials_rooms import PANELS, COVERINGS
 
 app = typer.Typer()
 
@@ -15,8 +16,8 @@ def calculate(length: float, width: float, height: float, wallssac: float, ceill
         typer.echo("You need acoustic adaptation. Choose the material for each surface")
 
         # HERE YOU HAVE TO PRINT OUT LIST OF MATERIALS AND HOW TO CONSTRUCT COMMENT THAT YOU HAVE TO USE
-        #enumerate(Panel)
-        #enumerate(Covering)
+        headers = ["name", "function", "absorption", "surface", "length", "width"]
+        typer.echo("\n" + tabulate(PANELS, headers=headers)+ "\n")
         
         
         a = typer.prompt("Input the coefficients of wall materials: ", type = float)

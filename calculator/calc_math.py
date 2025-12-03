@@ -1,4 +1,5 @@
-from materials_rooms import Panel
+from tabulate import tabulate
+from materials_rooms import Panel, PANELS
 
 from dataclasses import fields
 '''
@@ -28,7 +29,14 @@ if __name__=="__main__":
 '''
 def numerate():
 
-    for x in fields(Panel):
-        print(x.name, )
+#    for x in fields(Panel):
+#        print(x.name, x.)
+
+#    for x, p in enumerate(PANELS, 1):
+#        print(tabulate(f"{x}.{p.name},  {p.function},  {p.absorption}"))
+    
+
+    headers = ["name", "function", "absorption", "surface", "length", "width"]
+    print("\n" + tabulate(PANELS, headers=headers)+ "\n")
 
 numerate()
